@@ -14,10 +14,10 @@
     <div class="login-box">
             <form action="/login" method="post">
                 <label for="username">Username :</label>
-                <input type="text" id="username" name="username" maxlength="20" required title="TU Account Username">
+                <input type="text" id="username" name="username" maxlength="10" required title="TU Account Username">
                 
                 <label for="password">Password :</label>
-                <input type="password" id="password" name="password" required title="TU Account Password" placeholder="xxxxxxxxxxxxx">
+                <input type="password" id="password" name="password" maxlength="20" required title="TU Account Password" placeholder="xxxxxxxxxxxxx">
 
                 <button type="button" onclick="submitLogin()"><b>Login</b></button>
                 <!----><button type="button" onclick="call_REST_API_Hello()">Hello</button>
