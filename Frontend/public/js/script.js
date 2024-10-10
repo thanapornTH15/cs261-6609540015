@@ -1,8 +1,23 @@
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'; // Show the password
+        eyeIcon.src = '../public/img/eye-open-icon.png';
+        eyeIcon.alt = 'Hide Password';
+    } else {
+        passwordInput.type = 'password'; // Hide the password
+        eyeIcon.src = '../public/img/eye-close-icon.png';
+        eyeIcon.alt = 'Show Password';
+    }
+}
+
 function submitLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    fetch('/api/auth', {
+    fetch('http://localhost:8081/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -15,8 +30,6 @@ function submitLogin() {
     })
     .catch(error => console.error('Error:', error));
 }
-
-
 
 function call_REST_API_Hello() {
     const username = document.getElementById('username').value;
