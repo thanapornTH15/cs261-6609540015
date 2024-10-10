@@ -23,7 +23,7 @@ function call_REST_API_Hello() {
     const password = document.getElementById('password').value;
 
     const url = (
-        'http://localhost:8080/hello?' +
+        'http://localhost:8081/testservice/hello?' +
         new URLSearchParams({ myName: username, lastName: password}).toString()
       );
     
