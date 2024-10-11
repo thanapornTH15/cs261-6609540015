@@ -38,20 +38,21 @@ function submitLogin() {
     .then(response => response.json())
     .then(data => {
         //hide form and show message
-        document.getElementById('form').style.display = 'none'; 
+        document.getElementById('form').style.display = 'none';
         const resultDiv = document.getElementById('result');
         resultDiv.style.display = 'block';
 
         if (data.status) {
             document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;
-            document.getElementById('message').innerText = `UserName: ${data.username}\n`;
-            document.getElementById('message').innerText = `${data.displayname_en}\n`;
-            document.getElementById('message').innerText = `Role: ${data.type}\n`;
-            document.getElementById('message').innerText = `Faculty: ${data.faculty}, ${data.department}\n`;
-            document.getElementById('message').innerText = `Contact: ${data.email}`;
+            document.getElementById('message').innerText = 
+                `Username: ${data.username}\n` +
+                `Name: ${data.displayname_en}\n` +
+                `Role: ${data.type}\n` +
+                `Faculty: ${data.faculty}, ${data.department}\n` +
+                `Contact: ${data.email}`;
         } else {
             document.getElementById('status').innerText = `[Fail]\n`;
-            document.getElementById('message').innerText = `${data.message}`;
+            document.getElementById('message').innerText = `Username & Password Invalid!\n` + `Please reload this page and try again`;
         }
     })
     .catch(error => console.error('Error:', error));
