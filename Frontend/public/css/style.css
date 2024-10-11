@@ -137,4 +137,23 @@ input:valid {
     transition-duration: 0.4s;
 }
 
+#status {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    text-shadow: -2px -2px 0 #500000, 2px -2px 0 #500000,
+                 -2px 2px 0 #500000, 2px 2px 0 #500000;
+}
 
+#message {
+    margin-top: 15px;
+    font-size: 20px;
+    transition-duration: 0.4s;
+}
+
+#check {
+    display: block;
+    font-weight: bold;
+    color: #500000;
+}

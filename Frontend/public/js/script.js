@@ -14,19 +14,45 @@ function togglePassword() {
 }
 
 function submitLogin() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const UserName = document.getElementById('username').value;
+    const PassWord = document.getElementById('password').value;
+    const checkDiv = document.getElementById('check');
 
-    fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
+    if (!UserName || !PassWord) {
+        checkDiv.innerText = '*Please enter your username & password*';
+        return;
+    }
+
+    fetch('/auth', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Application-Key': 'TU8fd0eab52938979eddccfb6db00e95e1285e206739101818b7e36ce93d45958c3b042bf26f687271fb992beaff3650ca'
         },
-        body: JSON.stringify({ username, password })
+        body: 
+        JSON.stringify({ 
+            UserName, 
+            PassWord 
+        })
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('message').innerText = data.message;
+        //hide form and show message
+        document.getElementById('form').style.display = 'none'; 
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+
+        if (data.status) {
+            document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;
+            document.getElementById('message').innerText = `UserName: ${data.username}\n`;
+            document.getElementById('message').innerText = `${data.displayname_en}\n`;
+            document.getElementById('message').innerText = `Role: ${data.type}\n`;
+            document.getElementById('message').innerText = `Faculty: ${data.faculty}, ${data.department}\n`;
+            document.getElementById('message').innerText = `Contact: ${data.email}`;
+        } else {
+            document.getElementById('status').innerText = `[Fail]\n`;
+            document.getElementById('message').innerText = `${data.message}`;
+        }
     })
     .catch(error => console.error('Error:', error));
 }
@@ -36,7 +62,7 @@ function call_REST_API_Hello() {
     const password = document.getElementById('password').value;
 
     const url = (
-        'http://localhost:8081/testservice/hello?' +
+        'http://localhost:8080/testservice/hello?' +
         new URLSearchParams({ myName: username, lastName: password}).toString()
       );
     
