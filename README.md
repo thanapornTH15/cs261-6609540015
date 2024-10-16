@@ -8,6 +8,9 @@ This contains two folders:
 - Frontend: .html / .css / .js / .img / .json / .gitignore
 - Server-Setup: .dockerfile (docker image for build & run on Docker)
 
-You can install the latest version of this project by cloning only the master-frontend branch using the command:
-`git clone -b master-frontend https://github.com/thanapornTH15/cs261-6609540015.git`
-or select the download option via **Code > Download Zip** and then extract the zip file to access the working folder.
+You can install the latest version of this project by *cloning only the master-frontend branch* using the command:  
+`git clone -b master-frontend https://github.com/thanapornTH15/cs261-6609540015.git`  
+or select the download option via **Code > Download Zip** and then extract the zip file to access the working folder.  
+
+The last two lines of the DockerContainer_NodeJS.dockerfile file contain the commands used to build and run the docker image to create a NodeJS server.
+**Note that** these commands only work properly if you build the docker file in the same location as the front-end and server-setup folders, so use the code with caution.
