@@ -45,6 +45,7 @@ h2 {
     width: auto;
     height: inherit;
     text-shadow: 0px 0px 5px #a80f0f, 0px 0px 10px #a80f0f;
+    transition-duration: 0.5s;
 }
 
 .password-box {
@@ -146,6 +147,7 @@ input:valid {
     text-shadow: -2px -2px 0 #500000, 2px -2px 0 #500000,
                  -2px 2px 0 #500000, 2px 2px 0 #500000,
                  0px 0px 5px #a80f0f, 0px 0px 10px #a80f0f;
+    transition-duration: 0.4s;
 }
 
 #message {
@@ -155,6 +157,7 @@ input:valid {
     transition-duration: 0.4s;
     color: #000000;
     text-shadow: 0px 0px 10px #212121;
+    transition-duration: 0.4s;
 }
 
 #check {

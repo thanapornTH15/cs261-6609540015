@@ -9,7 +9,6 @@
   "author": "Thanaporn Thongsrichan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
+    "express": "^4.19.2"
   }
 }

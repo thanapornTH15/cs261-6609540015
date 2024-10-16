@@ -58,7 +58,15 @@ function submitLogin() {
     .catch(error => console.error('Error:', error));
 }
 
-function call_REST_API_Hello() {
+function backtoLogin() {
+    document.getElementById('form').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('message').innerText = '';
+}
+
+/*function call_REST_API_Hello() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -74,3 +82,4 @@ function call_REST_API_Hello() {
     })
     .catch(error => console.error('Error:', error));
 }
+*/
