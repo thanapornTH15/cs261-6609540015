@@ -43,6 +43,7 @@ function submitLogin() {
         resultDiv.style.display = 'block';
 
         if (data.status) {
+            addToDB(data);
             document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;
             document.getElementById('message').innerText = 
                 `Username: ${data.username}\n` +
@@ -66,20 +67,23 @@ function backtoLogin() {
     document.getElementById('message').innerText = '';
 }
 
-/*function call_REST_API_Hello() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    const url = (
-        'http://localhost:8080/testservice/hello?' +
-        new URLSearchParams({ myName: username, lastName: password}).toString()
-      );
-    
-    fetch(url)
-    .then(response => response.text())
-    .then(text => {
-        document.getElementById('message').innerText = text;
+function addToDB(user) {
+    fetch('api/students/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userName: user.username,
+            type: user.type,
+            engName: user.displayname_en,
+            email: user.email,
+            faculty: user.faculty
+        })
     })
-    .catch(error => console.error('Error:', error));
+    .then(response => response.text())
+    .then(message => {
+        console.log(message);
+    })
+    .catch(error => console.error('Error adding student:', error));
 }
-*/
