@@ -43,14 +43,19 @@ function submitLogin() {
         resultDiv.style.display = 'block';
 
         if (data.status) {
-            addToDB(data);
-            document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;
-            document.getElementById('message').innerText = 
+            addToDB(data)
+                .then(() => {        
+                document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;
+                document.getElementById('message').innerText = 
                 `Username: ${data.username}\n` +
                 `Name: ${data.displayname_en}\n` +
                 `Role: ${data.type}\n` +
                 `Faculty: ${data.faculty}, ${data.department}\n` +
                 `Contact: ${data.email}`;
+            })
+            .catch(error => {
+                alert(console.error('Error:', error));
+            });
         } else {
             document.getElementById('status').innerText = `[Fail]\n`;
             document.getElementById('message').innerText = `Username & Password Invalid!\n` + `Please reload this page and try again`;
@@ -68,7 +73,7 @@ function backtoLogin() {
 }
 
 function addToDB(user) {
-    fetch('api/students/add', {
+    fetch('api/users/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -81,9 +86,13 @@ function addToDB(user) {
             faculty: user.faculty
         })
     })
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to save user data to database");
+        }
+        return response.text();
+    })
     .then(message => {
         console.log(message);
-    })
-    .catch(error => console.error('Error adding student:', error));
+    });
 }
